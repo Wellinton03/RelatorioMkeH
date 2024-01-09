@@ -1,0 +1,202 @@
+package Medias;
+
+import javax.swing.AbstractButton;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Gastos extends JFrame {
+
+	private JTextField decisao;
+	private JTextField distancia;
+	private JTextField nomeFun;
+	double custoGasolina = 5.50;
+	double mediaConsumo = 12.00;
+	double gasolinaTlGasto;
+	double consumoPorKm;
+	private JTextField hrFuncionario;
+	private JTextField hrsTrabalhadas;
+	double totalDeHoras;
+	String opcao;
+
+	public Gastos() {
+		super("Calculadora de Gastos");
+		setSize(1000, 600);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setLayout(new BorderLayout());
+
+		JLabel texto = new JLabel("O que será calculado? 'KM' para quilometragem ou 'Hora' para horas extras");
+		texto.setFont(new Font("Arial", Font.BOLD, 12));
+
+		decisao = new JTextField(20);
+		
+		JPanel panel = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(5, 0, 10, 0);
+		panel.add(texto, gbc);
+
+		gbc.gridy = 1;
+		gbc.anchor = GridBagConstraints.NORTH;
+		panel.add(decisao, gbc);
+
+		add(panel, BorderLayout.NORTH);
+
+		JButton button = new JButton("FINALIZAR");
+		button.setFont(new Font("Arial", Font.BOLD, 11));
+		button.setForeground(new Color(255, 250, 250));
+		button.setBackground(new Color(34, 139, 34));
+		gbc.gridy = 2;
+		add(button, BorderLayout.SOUTH);
+
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				processarEntradas();
+			}
+		});
+	}
+
+	private void processarEntradas() {
+		String opcao = decisao.getText();
+
+		if (opcao.equalsIgnoreCase("KM")) {
+			JPanel panelKm = new JPanel(new GridBagLayout());
+            GridBagConstraints gbcKm = new GridBagConstraints();
+            gbcKm.insets = new Insets(5, 5, 10, 5);
+
+            JLabel nomeFunTxt = new JLabel("Qual o nome do Funcionário?");
+            nomeFunTxt.setFont(new Font("Arial", Font.BOLD, 12));
+            gbcKm.gridx = 0;
+            gbcKm.gridy = 0;
+            panelKm.add(nomeFunTxt, gbcKm);
+
+            nomeFun = new JTextField(20);
+            gbcKm.gridy = 1;
+            panelKm.add(nomeFun, gbcKm);
+
+            JLabel distanciaTxt = new JLabel("Insira a distância percorrida em quilômetros:");
+            distanciaTxt.setFont(new Font("Arial", Font.BOLD, 12));
+            gbcKm.gridy = 2;
+            panelKm.add(distanciaTxt, gbcKm);
+
+            distancia = new JTextField(20);
+            gbcKm.gridy = 3;
+            panelKm.add(distancia, gbcKm);
+
+            JButton buttonKm = new JButton("CALCULAR");
+            buttonKm.setFont(new Font("Arial", Font.BOLD, 11));
+            buttonKm.setForeground(new Color(255, 250, 250));
+            buttonKm.setBackground(new Color(34, 139, 34));
+            gbcKm.gridy = 4;
+            buttonKm.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        double distanciaDouble = Double.parseDouble(distancia.getText());
+                        gasolinaTlGasto = gastoCombustivel(distanciaDouble, consumoPorKm, custoGasolina);
+                        System.out.println("O funcionário " + nomeFun.getText() + " teve um gasto de " + gasolinaTlGasto + " reais");
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(Gastos.this, "Por favor, insira uma distância válida.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            });
+            gbcKm.gridy = 5;
+            panelKm.add(buttonKm, gbcKm);
+
+            add(panelKm, BorderLayout.CENTER);
+            revalidate();
+            repaint();
+
+		} else if (opcao.equalsIgnoreCase("Hora")) {
+			 JPanel panelHora = new JPanel(new GridBagLayout());
+	            GridBagConstraints gbcHora = new GridBagConstraints();
+	            gbcHora.insets = new Insets(5, 5, 10, 5);
+
+	            JLabel nomeFunTxt = new JLabel("Qual o nome do Funcionário?");
+	            nomeFunTxt.setFont(new Font("Arial", Font.BOLD, 12));
+	            gbcHora.gridx = 0;
+	            gbcHora.gridy = 0;
+	            panelHora.add(nomeFunTxt, gbcHora);
+
+	            nomeFun = new JTextField(20);
+	            gbcHora.gridy = 1;
+	            panelHora.add(nomeFun, gbcHora);
+
+	            JLabel hrFuncionarioTxt = new JLabel("Qual é o valor hora deste funcionário?");
+	            hrFuncionarioTxt.setFont(new Font("Arial", Font.BOLD, 12));
+	            gbcHora.gridy = 2;
+	            panelHora.add(hrFuncionarioTxt, gbcHora);
+
+	            hrFuncionario = new JTextField(20);
+	            gbcHora.gridy = 3;
+	            panelHora.add(hrFuncionario, gbcHora);
+
+	            JLabel hrsTrabalhadasTxt = new JLabel("Quantas horas foram trabalhadas?");
+	            hrsTrabalhadasTxt.setFont(new Font("Arial", Font.BOLD, 12));
+	            gbcHora.gridy = 4;
+	            panelHora.add(hrsTrabalhadasTxt, gbcHora);
+
+	            hrsTrabalhadas = new JTextField(20);
+	            gbcHora.gridy = 5;
+	            panelHora.add(hrsTrabalhadas, gbcHora);
+
+	            JButton buttonHora = new JButton("CALCULAR");
+	            buttonHora.setFont(new Font("Arial", Font.BOLD, 11));
+	            buttonHora.setForeground(new Color(255, 250, 250));
+	            buttonHora.setBackground(new Color(34, 139, 34));
+	            gbcHora.gridy = 6;
+	            buttonHora.addActionListener(new ActionListener() {
+	                public void actionPerformed(ActionEvent e) {
+	                    try {
+	                        double hrFuncionarioDouble = Double.parseDouble(hrFuncionario.getText());
+	                        double hrsTrabalhadasDouble = Double.parseDouble(hrsTrabalhadas.getText());
+	                        totalDeHoras = CalculoDeHoras(hrFuncionarioDouble, hrsTrabalhadasDouble);
+	                        System.out.println("O funcionário " + nomeFun.getText() + " teve um Gasto de " + totalDeHoras
+	                                + " de reais sobre as horas trabalhadas");
+	                    } catch (NumberFormatException ex) {
+	                        JOptionPane.showMessageDialog(Gastos.this, "Por favor, insira valores numéricos válidos.",
+	                                "Erro", JOptionPane.ERROR_MESSAGE);
+	                    }
+	                }
+	            });
+	            gbcHora.gridy = 7;
+	            panelHora.add(buttonHora, gbcHora);
+
+	            add(panelHora, BorderLayout.CENTER);
+	            revalidate();
+	            repaint();
+		} else {
+			System.out
+					.println("Por favor digite a palavra chave 'KM' para quilometragem ou 'Hora para as horas extras");
+		}
+
+	}
+
+	public double CalculoDeHoras(double hrFuncionario, double hrsTrabalhadas) {
+		double totalDeHoras = hrFuncionario * hrsTrabalhadas;
+		return totalDeHoras;
+	}
+
+	public double gastoCombustivel(double distancia, double consumoPorLitro, double custoCombustivel) {
+		consumoPorKm = distancia / mediaConsumo;
+		gasolinaTlGasto = consumoPorKm * custoGasolina;
+		return gasolinaTlGasto;
+	}
+
+	public static void main(String[] args) {
+		new Gastos().setVisible(true);
+	}
+}
