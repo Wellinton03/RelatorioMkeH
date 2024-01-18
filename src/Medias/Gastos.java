@@ -60,7 +60,7 @@ public class Gastos extends JFrame {
 
 	public Gastos() {
 		super("Calculadora de Gastos");
-		setSize(1320, 800);
+		setSize(1320, 740);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(new BorderLayout());
@@ -362,7 +362,7 @@ public class Gastos extends JFrame {
 
 					resultadoCliente.setText("Cliente: " + cliente.getText());
 					resultadoFuncionarios.setText("Funcionários(as) envolvido(as): " + nomeFunEnvol.getText());
-					resultadoSetor.setText("Setor:" + setor);
+					resultadoSetor.setText("Setor: " + setor.getText());
 					resultadoDistancia.setText("Distância percorrida: " + distancia.getText() + "km");
 					resultadoCidade.setText("Cidade de destino: " + cidade.getText());
 					resultadoDataProblema.setText("Data do ocorrido: " + dataProblema.getText());
@@ -383,7 +383,7 @@ public class Gastos extends JFrame {
 					try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile, true))) {
 						writer.write("Cliente: " + cliente.getText() + "\n");
 						writer.write("Funcionários(as) envolvido(as): " + nomeFunEnvol.getText() + "\n");
-						writer.write("Setor: "  + setor);
+						writer.write("Setor: "  + setor.getText());
 						writer.write("Distância percorrida: " + distancia.getText() + "km\n");
 						writer.write("idade de destino: " + cidade.getText() + "\n");
 						writer.write("Data do ocorrido: " + dataProblema.getText() + "\n");
