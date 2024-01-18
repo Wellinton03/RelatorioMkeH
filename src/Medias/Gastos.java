@@ -1,7 +1,6 @@
 package Medias;
 
-import javax.swing.AbstractButton;
-import javax.swing.BoxLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,14 +11,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Panel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
@@ -60,7 +58,7 @@ public class Gastos extends JFrame {
 
 	public Gastos() {
 		super("Calculadora de Gastos");
-		setSize(1320, 740);
+		setSize(900, 740);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(new BorderLayout());
@@ -118,7 +116,7 @@ public class Gastos extends JFrame {
 		gbcHk.gridx = 1;
 		gbcHk.gridy = 12;
 		panelHk.add(distanciaTxt, gbcHk);
-		
+
 		distancia = new JTextField(20);
 		gbcHk.gridx = 1;
 		gbcHk.gridy = 13;
@@ -135,20 +133,19 @@ public class Gastos extends JFrame {
 		gbcHk.gridy = 15;
 		panelHk.add(custoMateriaPrima, gbcHk);
 
-		
 		JLabel descricaoProblemaTxt = new JLabel("Descreva o problema:");
 		descricaoProblemaTxt.setFont(new Font("Arial", Font.BOLD, 12));
 		gbcHk.gridx = 1;
 		gbcHk.gridy = 16;
 		panelHk.add(descricaoProblemaTxt, gbcHk);
-		
+
 		descricaoProblema = new JTextArea(5, 20);
 		descricaoProblema.setLineWrap(true);
 		descricaoProblema.setWrapStyleWord(true);
 		gbcHk.gridx = 1;
 		gbcHk.gridy = 17;
 		panelHk.add(new JScrollPane(descricaoProblema), gbcHk);
-		
+
 		JLabel nomeFunTxt = new JLabel("Qual o nome do(s) Funcionário(s)?");
 		nomeFunTxt.setFont(new Font("Arial", Font.BOLD, 12));
 		gbcHk.gridx = 3;
@@ -165,13 +162,13 @@ public class Gastos extends JFrame {
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 6;
 		panelHk.add(setorTxt, gbcHk);
-		
+
 		setor = new JTextField(20);
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 7;
 		panelHk.add(setor, gbcHk);
-		
-		JLabel hrFuncionarioTxt = new JLabel("Qual é o valor hora do 1º funcionário?");
+
+		JLabel hrFuncionarioTxt = new JLabel("Qual é o valor hora do 1º funcionário(a)?");
 		hrFuncionarioTxt.setFont(new Font("Arial", Font.BOLD, 12));
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 8;
@@ -181,19 +178,19 @@ public class Gastos extends JFrame {
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 9;
 		panelHk.add(hrFuncionario, gbcHk);
-		
-		JLabel hrsTrabalhadasTxt = new JLabel("Horas trabalhadas pelo 1º funcionário:");
+
+		JLabel hrsTrabalhadasTxt = new JLabel("Horas trabalhadas 1º funcionário(a):");
 		hrsTrabalhadasTxt.setFont(new Font("Arial", Font.BOLD, 12));
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 10;
 		panelHk.add(hrsTrabalhadasTxt, gbcHk);
-		
+
 		hrsTrabalhadas = new JTextField(20);
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 11;
 		panelHk.add(hrsTrabalhadas, gbcHk);
 
-		JLabel hrFuncionarioTxt2 = new JLabel("Qual é o valor hora do 2º funcionário?");
+		JLabel hrFuncionarioTxt2 = new JLabel("Qual é o valor hora do 2º funcionário(a)?");
 		hrFuncionarioTxt2.setFont(new Font("Arial", Font.BOLD, 12));
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 12;
@@ -204,8 +201,7 @@ public class Gastos extends JFrame {
 		gbcHk.gridy = 13;
 		panelHk.add(hrFuncionario2, gbcHk);
 
-
-		JLabel hrsTrabalhadasTxt2 = new JLabel("Horas trabalhadas pelo 2º funcionário:");
+		JLabel hrsTrabalhadasTxt2 = new JLabel("Horas trabalhadas 2º funcionário(a):");
 		hrsTrabalhadasTxt.setFont(new Font("Arial", Font.BOLD, 12));
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 14;
@@ -215,21 +211,19 @@ public class Gastos extends JFrame {
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 15;
 		panelHk.add(hrsTrabalhadas2, gbcHk);
-		
+
 		JLabel acoesCorretivasTxt = new JLabel("Qual a ação foi tomada?");
 		acoesCorretivasTxt.setFont(new Font("Arial", Font.BOLD, 12));
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 16;
 		panelHk.add(acoesCorretivasTxt, gbcHk);
-		
+
 		acoesCorretivas = new JTextArea(5, 20);
 		acoesCorretivas.setLineWrap(true);
 		acoesCorretivas.setWrapStyleWord(true);
 		gbcHk.gridx = 3;
 		gbcHk.gridy = 17;
 		panelHk.add(new JScrollPane(acoesCorretivas), gbcHk);
-
-		
 
 		JLabel resultadoCliente = new JLabel();
 		gbcHk.gridx = 5;
@@ -255,7 +249,7 @@ public class Gastos extends JFrame {
 		gbcHk.gridx = 5;
 		gbcHk.gridy = 9;
 		panelHk.add(resultadoFuncionarios, gbcHk);
-		
+
 		JLabel resultadoSetor = new JLabel();
 		gbcHk.gridx = 5;
 		gbcHk.gridy = 10;
@@ -368,9 +362,9 @@ public class Gastos extends JFrame {
 					resultadoDataProblema.setText("Data do ocorrido: " + dataProblema.getText());
 					resultadoDescricaoProblema.setText("Descrição do problema:" + " (enviado para o relatório)");
 					resultadoSolucaoProblema.setText("Solução:" + " (enviado para o relatório)");
-					resultadoTempoDeSolucao.setText("Dias usados para solucionar o problema: " + tempSolucao.getText());
+					resultadoTempoDeSolucao.setText("Dias para solucionar o problema: " + tempSolucao.getText());
 					resultadoHorasTrabalhadas.setText(
-							"Horas de trabalho usadas pelo(s) funcionários(as): " + totalTrabalhadoFormatado + "hr(s)");
+							"Hora(s) trabalhada(s): " + totalTrabalhadoFormatado + "hr(s)");
 					resultadoGastosHoras.setText("Gastos com horas: R$" + totalDeHorasFormatado + " reais");
 					resultadoGastosCombustivel.setText("Gastos com combustível: R$" + gasolinaTlFormatada + " reais");
 					resultadoGastosMateriaPrima
@@ -383,15 +377,15 @@ public class Gastos extends JFrame {
 					try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile, true))) {
 						writer.write("Cliente: " + cliente.getText() + "\n");
 						writer.write("Funcionários(as) envolvido(as): " + nomeFunEnvol.getText() + "\n");
-						writer.write("Setor: "  + setor.getText());
+						writer.write("Setor: " + setor.getText() + "\n");
 						writer.write("Distância percorrida: " + distancia.getText() + "km\n");
-						writer.write("idade de destino: " + cidade.getText() + "\n");
+						writer.write("Cidade de destino: " + cidade.getText() + "\n");
 						writer.write("Data do ocorrido: " + dataProblema.getText() + "\n");
 						writer.write("Descrição do problema: " + descricaoProblema.getText() + "\n");
 						writer.write("Solução: " + acoesCorretivas.getText() + "\n");
-						writer.write("Dias usados para solucionar o problema: " + tempSolucao.getText() + "\n");
+						writer.write("Dias para solucionar o problema: " + tempSolucao.getText() + "\n");
 						writer.write(
-								"Horas de trabalho pelo(s) funcionários(as): " + totalTrabalhadoFormatado + "hr(s)\n");
+								"Hora(s) trabalhada(s): " + totalTrabalhadoFormatado + "hr(s)\n");
 						writer.write("\n");
 						writer.write("GASTOS:");
 						writer.write("\n");
@@ -399,9 +393,8 @@ public class Gastos extends JFrame {
 						writer.write("Gastos com Combustível: R$" + gasolinaTlFormatada + " reais\n");
 						writer.write("Gastos com Matéria prima: R$" + custoMateriaPrimaDouble + " reais\n");
 						writer.write("Gasto total: R$" + gastoTotalFormatado + " reais\n\n");
-						writer.write(" \n");
 						writer.write("---------------------------------------------------------------------");
-
+						writer.write("\n");
 						writer.close();
 						JOptionPane.showMessageDialog(Gastos.this, "Relatório salvo com sucesso!", "Sucesso",
 								JOptionPane.INFORMATION_MESSAGE);
@@ -446,6 +439,7 @@ public class Gastos extends JFrame {
 		custoMateriaPrima.setText("");
 		nomeFunEnvol.setText("");
 		hrFuncionario.setText("");
+		setor.setText("");
 		hrFuncionario2.setText("");
 		hrsTrabalhadas.setText("");
 		hrsTrabalhadas2.setText("");
