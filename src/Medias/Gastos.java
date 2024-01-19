@@ -58,7 +58,7 @@ public class Gastos extends JFrame {
 
 	public Gastos() {
 		super("Calculadora de Gastos");
-		setSize(900, 740);
+		setSize(900, 720);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(new BorderLayout());
